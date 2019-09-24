@@ -1,0 +1,38 @@
+
+<div class="container p-5">
+  <div class="row">
+
+    {{#each notes}}
+    <div class="card border-primary mb-3 mr-3" style="max-width: 20rem;">
+
+      <div class="card-header d-flex">
+         <div class="p-2 mr-auto ">{{title}} </div>
+         <div class="p-2">   <a href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i> </a> </div>
+ <div class="p-2">
+          <form action="/notes/delete/{{_id}}?_method=DELETE"  method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit"><i class="fas fa-trash"></i> </button>
+          </form>
+
+    </div>
+     </div>
+      <div class="card-body">
+        <h4 class="card-title">{{title}}</h4>
+        <p class="card-text">{{description}}</p>
+      </div>
+      <div class="card-footer small bg-dark">{{date}}</div>
+
+    </div>
+{{else}}
+
+<div class="card mx-auto">
+  <div class="card-body">
+    <p class="lead">There are not notes yet.<b> {{user.name}} </b></p>
+    <a href="/notes/add" class="btn btn-info btn-block">Add Note</a>
+  </div>
+</div>
+
+{{/each}}
+  </div>
+</div>
+</div>
